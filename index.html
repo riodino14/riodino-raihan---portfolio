@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riodino Raihan - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Configure Tailwind CSS for dark mode strategy (class)
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {},
+      },
+    }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Custom scrollbar for better aesthetics */
+    /* Light mode scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e2e8f0; /* slate-200 */
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94a3b8; /* slate-400 */
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #64748b; /* slate-500 */
+    }
+
+    /* Dark mode scrollbar */
+    html.dark ::-webkit-scrollbar-track {
+      background: #1e293b; /* slate-800 */
+    }
+    html.dark ::-webkit-scrollbar-thumb {
+      background: #475569; /* slate-600 */
+    }
+    html.dark ::-webkit-scrollbar-thumb:hover {
+      background: #64748b; /* slate-500 */
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^6.24.0",
+    "react-icons/": "https://esm.sh/react-icons@^5.5.0/"
+  }
+}
+</script>
+  <!-- 1. Include Babel Standalone -->
+  <script src="https://unpkg.com/@babel/standalone@^7.24.0/babel.min.js"></script>
+  <script>
+    // Script to apply initial theme and prevent FOUC
+    (function() {
+      function applyTheme() {
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+      applyTheme();
+      // Listen for changes in system preference if no theme is stored
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!localStorage.getItem('theme')) {
+          if (e.matches) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        }
+      });
+    })();
+  </script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-slate-100 dark:bg-slate-900 transition-colors duration-300">
+  <div id="root"></div>
+  <!-- 2. Change script type to text/babel and add presets -->
+  <script type="text/babel" data-type="module" data-presets="react,typescript" src="./index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
