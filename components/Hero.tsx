@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProfileData } from '../types.ts';
 import { FaPhone, FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
-
+import { FaFileAlt } from 'react-icons/fa';
 const Hero: React.FC<ProfileData> = ({ name, title, phone, email, linkedin, personalStatement, profileImageUrl }) => {
   return (
     <section 
@@ -39,6 +39,14 @@ const Hero: React.FC<ProfileData> = ({ name, title, phone, email, linkedin, pers
           )}
            <a href={`https://github.com/riodino14`} target="_blank" rel="noopener noreferrer" className="flex items-center text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors">
               <FaGithub className="mr-2" /> GitHub
+            </a>
+            <a
+              href="https://drive.google.com/file/d/16ihYlD7aBHRkS8ZQcPwxiuH1zZ3SPYcG/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors"
+            >
+              <FaFileAlt className="mr-2" /> View My CV
             </a>
         </div>
       </div>
