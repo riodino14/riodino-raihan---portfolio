@@ -7,7 +7,7 @@ export const profileData: ProfileData = {
   title: "Informatics Undergraduate Student",
   phone: "+62 812 1097 8384",
   email: "riodinoraihan@gmail.com",
-  linkedin: "riodinoraihan", // Placeholder, actual URL might be linkedin.com/in/riodinoraihan
+  linkedin: "riodino-raihan", // Placeholder, actual URL might be linkedin.com/in/riodinoraihan
   personalStatement: "Undergraduate student in Informatics from Telkom University who has experience in leadership, organization, and has a great interest in the world of programming and aspires to become a technopreneur.",
   profileImageUrl: "assets/Profile-Riodino-Raihan.jpeg"
 };
