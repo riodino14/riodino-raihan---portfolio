@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
          <div className="mt-2 text-xs">
            Contact: <a href={`mailto:${profileData.email}`} className="hover:text-sky-600 dark:hover:text-sky-400">{profileData.email}</a>
            {profileData.linkedin && 
-             <> | <a href={`https://linkedin.com/in/${profileData.linkedin}`} target="_blank" rel="noopener noreferrer" className="hover:text-sky-600 dark:hover:text-sky-400">LinkedIn</a></>
+             <> | <a href={`https://linkedin.com/in/riodino-raihan`} target="_blank" rel="noopener noreferrer" className="hover:text-sky-600 dark:hover:text-sky-400">LinkedIn</a></>
            }
          </div>
       </div>
