@@ -25,7 +25,7 @@ export const educationData: EducationItem[] = [
     proofs: [
       {
         label: "View KHS",
-        url: "https://drive.google.com/file/d/1Gioes7p5yURHUhG_XIOVgvxXSWCHsDgp/view?usp=sharing"
+        url: "https://drive.google.com/file/d/1Z-HNyDeBNNsGYmnHbmzgK5_Whl-QlGJm/view?usp=sharing"
       }
     ],
   }
