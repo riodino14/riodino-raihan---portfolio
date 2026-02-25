@@ -38,7 +38,7 @@ const WorkExperienceDetailPage: React.FC<WorkExperienceDetailPageProps> = ({ exp
         className="mb-8 inline-flex items-center text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors group"
         aria-label="Go back to previous page"
       >
-        <FaArrowLeft className="mr-2 transform group-hover:-translate-x-1 transition-transform duration-200" />
+        <span className="mr-2 flex items-center transform group-hover:-translate-x-1 transition-transform duration-200"><FaArrowLeft /></span>
         Back
       </button>
 
@@ -53,7 +53,7 @@ const WorkExperienceDetailPage: React.FC<WorkExperienceDetailPageProps> = ({ exp
       {proofs && proofs.length > 0 && (
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-sky-600 dark:text-sky-500 mb-4 flex items-center">
-            <FaLink className="mr-3" /> Supporting Documents
+            <span className="mr-3 flex items-center"><FaLink /></span> Supporting Documents
           </h2>
           <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
             {proofs.map((proof, index) => (
@@ -65,7 +65,7 @@ const WorkExperienceDetailPage: React.FC<WorkExperienceDetailPageProps> = ({ exp
                 className="inline-flex items-center justify-center px-4 py-2 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white text-sm font-medium rounded-md transition-colors shadow-md"
                 aria-label={`View document: ${proof.label}`}
               >
-                <FaExternalLinkAlt className="mr-2" />
+                <span className="mr-2 flex items-center"><FaExternalLinkAlt /></span>
                 {proof.label}
               </a>
             ))}
@@ -76,7 +76,7 @@ const WorkExperienceDetailPage: React.FC<WorkExperienceDetailPageProps> = ({ exp
       {detailedInfo?.description && (
         <div className="mb-6">
           <h2 className="text-2xl font-semibold text-sky-600 dark:text-sky-500 mb-3 flex items-center">
-             <FaBriefcase className="mr-2" /> Overview
+             <span className="mr-2 flex items-center"><FaBriefcase /></span> Overview
           </h2>
           <p className="text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">{detailedInfo.description}</p>
         </div>
@@ -96,7 +96,7 @@ const WorkExperienceDetailPage: React.FC<WorkExperienceDetailPageProps> = ({ exp
       {detailedInfo?.keyAchievements && detailedInfo.keyAchievements.length > 0 && (
         <div className="mb-6">
           <h2 className="text-2xl font-semibold text-sky-600 dark:text-sky-500 mb-3 flex items-center">
-            <FaAward className="mr-2 text-yellow-500 dark:text-yellow-400" /> Key Achievements
+            <span className="mr-2 flex items-center text-yellow-500 dark:text-yellow-400"><FaAward /></span> Key Achievements
           </h2>
           <ul className="list-disc list-inside space-y-1 text-slate-700 dark:text-slate-300 pl-4">
             {detailedInfo.keyAchievements.map((achievement, index) => (
@@ -109,7 +109,7 @@ const WorkExperienceDetailPage: React.FC<WorkExperienceDetailPageProps> = ({ exp
       {detailedInfo?.skillsDeveloped && detailedInfo.skillsDeveloped.length > 0 && (
         <div className="mb-6">
           <h2 className="text-2xl font-semibold text-sky-600 dark:text-sky-500 mb-3 flex items-center">
-            <FaTools className="mr-2 text-slate-500 dark:text-slate-400" /> Skills Developed
+            <span className="mr-2 flex items-center text-slate-500 dark:text-slate-400"><FaTools /></span> Skills Developed
           </h2>
           <div className="flex flex-wrap gap-2">
             {detailedInfo.skillsDeveloped.map((skill, index) => (

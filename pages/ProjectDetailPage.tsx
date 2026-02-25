@@ -36,12 +36,12 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projects }) => {
         className="mb-8 inline-flex items-center text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors group"
         aria-label="Go back to previous page"
       >
-        <FaArrowLeft className="mr-2 transform group-hover:-translate-x-1 transition-transform duration-200" />
+        <span className="mr-2 flex items-center transform group-hover:-translate-x-1 transition-transform duration-200"><FaArrowLeft /></span>
         Back
       </button>
 
       {imageUrl && (
-        <img src={imageUrl} alt={title} className="w-full h-auto object-contain rounded-lg mb-8 shadow-lg" />
+        <img src={imageUrl} alt={title} className="w-full object-cover rounded-lg mb-8 shadow-lg" />
       )}
       
       <h1 className="text-3xl md:text-4xl font-bold text-sky-600 dark:text-sky-400 mb-1">{title}</h1>
@@ -50,7 +50,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projects }) => {
       {proofs && proofs.length > 0 && (
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-sky-600 dark:text-sky-500 mb-4 flex items-center">
-            <FaLink className="mr-3" /> Supporting Documents
+            <span className="mr-3 flex items-center"><FaLink /></span> Supporting Documents
           </h2>
           <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
             {proofs.map((proof, index) => (
@@ -62,7 +62,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projects }) => {
                 className="inline-flex items-center justify-center px-4 py-2 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white text-sm font-medium rounded-md transition-colors shadow-md"
                 aria-label={`View document: ${proof.label}`}
               >
-                <FaExternalLinkAlt className="mr-2" />
+                <span className="mr-2 flex items-center"><FaExternalLinkAlt /></span>
                 {proof.label}
               </a>
             ))}
@@ -80,7 +80,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projects }) => {
       {detailedInfo?.problemStatement && (
         <div className="mb-6">
           <h2 className="text-2xl font-semibold text-sky-600 dark:text-sky-500 mb-3 flex items-center">
-            <FaExclamationTriangle className="mr-2 text-yellow-500 dark:text-yellow-400" /> Problem Statement
+            <span className="mr-2 flex items-center text-yellow-500 dark:text-yellow-400"><FaExclamationTriangle /></span> Problem Statement
           </h2>
           <p className="text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">{detailedInfo.problemStatement}</p>
         </div>
@@ -89,7 +89,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projects }) => {
       {detailedInfo?.solutionOverview && (
         <div className="mb-6">
           <h2 className="text-2xl font-semibold text-sky-600 dark:text-sky-500 mb-3 flex items-center">
-            <FaLightbulb className="mr-2 text-green-500 dark:text-green-400" /> Solution Overview
+            <span className="mr-2 flex items-center text-green-500 dark:text-green-400"><FaLightbulb /></span> Solution Overview
           </h2>
           <p className="text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">{detailedInfo.solutionOverview}</p>
         </div>
@@ -109,7 +109,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projects }) => {
       {technologies && technologies.length > 0 && (
         <div className="mb-6">
           <h2 className="text-2xl font-semibold text-sky-600 dark:text-sky-500 mb-3 flex items-center">
-            <FaTools className="mr-2 text-slate-500 dark:text-slate-400" /> Technologies Used
+            <span className="mr-2 flex items-center text-slate-500 dark:text-slate-400"><FaTools /></span> Technologies Used
           </h2>
           <div className="flex flex-wrap gap-2">
             {technologies.map((tech, index) => (
@@ -167,7 +167,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projects }) => {
                 rel="noopener noreferrer" 
                 className="inline-flex items-center px-6 py-3 bg-sky-600 hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600 text-white text-md font-medium rounded-md transition-colors shadow-lg"
             >
-                <FaCodeBranch className="mr-2 h-5 w-5"/>
+                <span className="mr-2 flex items-center h-5 w-5"><FaCodeBranch /></span>
                 View Project / Repository 
             </a>
         </div>

@@ -36,12 +36,12 @@ const AchievementDetailPage: React.FC<AchievementDetailPageProps> = ({ achieveme
         className="mb-8 inline-flex items-center text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors group"
         aria-label="Go back to previous page"
       >
-        <FaArrowLeft className="mr-2 transform group-hover:-translate-x-1 transition-transform duration-200" />
+        <span className="mr-2 flex items-center transform group-hover:-translate-x-1 transition-transform duration-200"><FaArrowLeft /></span>
         Back
       </button>
 
       {imageUrl && (
-        <img src={imageUrl} alt={title} className="w-full h-auto object-contain rounded-lg mb-8 shadow-lg" />
+        <img src={imageUrl} alt={title} className="w-full object-cover rounded-lg mb-8 shadow-lg" />
       )}
       
       <h1 className="text-3xl md:text-4xl font-bold text-sky-600 dark:text-sky-400 mb-1">{title}</h1>
@@ -50,7 +50,7 @@ const AchievementDetailPage: React.FC<AchievementDetailPageProps> = ({ achieveme
       {proofs && proofs.length > 0 && (
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-sky-600 dark:text-sky-500 mb-4 flex items-center">
-            <FaLink className="mr-3" /> Supporting Documents
+            <span className="mr-3 flex items-center"><FaLink /></span> Supporting Documents
           </h2>
           <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
             {proofs.map((proof, index) => (
@@ -62,7 +62,7 @@ const AchievementDetailPage: React.FC<AchievementDetailPageProps> = ({ achieveme
                 className="inline-flex items-center justify-center px-4 py-2 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white text-sm font-medium rounded-md transition-colors shadow-md"
                 aria-label={`View document: ${proof.label}`}
               >
-                <FaExternalLinkAlt className="mr-2" />
+                <span className="mr-2 flex items-center"><FaExternalLinkAlt /></span>
                 {proof.label}
               </a>
             ))}
@@ -73,7 +73,7 @@ const AchievementDetailPage: React.FC<AchievementDetailPageProps> = ({ achieveme
       {detailedInfo?.fullDescription && (
         <div className="mb-6">
           <h2 className="text-2xl font-semibold text-sky-600 dark:text-sky-500 mb-3 flex items-center">
-             <FaAward className="mr-2 text-yellow-500" /> Detailed Description
+             <span className="mr-2 flex items-center text-yellow-500"><FaAward /></span> Detailed Description
           </h2>
           <p className="text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">{detailedInfo.fullDescription}</p>
         </div>
@@ -82,7 +82,7 @@ const AchievementDetailPage: React.FC<AchievementDetailPageProps> = ({ achieveme
       {detailedInfo?.context && (
         <div className="mb-6">
           <h2 className="text-2xl font-semibold text-sky-600 dark:text-sky-500 mb-3 flex items-center">
-            <FaBookOpen className="mr-2 text-slate-500 dark:text-slate-400" /> Context & Significance
+            <span className="mr-2 flex items-center text-slate-500 dark:text-slate-400"><FaBookOpen /></span> Context & Significance
           </h2>
           <p className="text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">{detailedInfo.context}</p>
         </div>
@@ -91,7 +91,7 @@ const AchievementDetailPage: React.FC<AchievementDetailPageProps> = ({ achieveme
       {detailedInfo?.learnings && detailedInfo.learnings.length > 0 && (
         <div className="mb-6">
           <h2 className="text-2xl font-semibold text-sky-600 dark:text-sky-500 mb-3 flex items-center">
-            <FaBrain className="mr-2 text-green-500" /> Key Learnings
+            <span className="mr-2 flex items-center text-green-500"><FaBrain /></span> Key Learnings
           </h2>
           <ul className="list-disc list-inside space-y-1 text-slate-700 dark:text-slate-300 pl-4">
             {detailedInfo.learnings.map((learning, index) => (

@@ -25,7 +25,7 @@ const OrganizationCard: React.FC<OrganizationItem> = ({ id, name, role, duration
             to={`/organization/${id}`} 
             className="inline-flex items-center px-4 py-2 bg-sky-600 hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600 text-white text-sm font-medium rounded-md transition-colors"
           >
-            View Details <FaArrowRight className="ml-2" />
+            View Details <span className="ml-2 flex items-center"><FaArrowRight /></span>
           </Link>
           {proofs && proofs.map((proof, index) => (
             <a
@@ -37,7 +37,7 @@ const OrganizationCard: React.FC<OrganizationItem> = ({ id, name, role, duration
               className="inline-flex items-center px-3 py-1 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white text-xs font-medium rounded-md transition-colors"
               aria-label={`View proof: ${proof.label}`}
             >
-              <FaLink className="mr-1.5" />
+              <span className="mr-1.5 flex items-center"><FaLink /></span>
               <span>{proof.label}</span>
             </a>
           ))}

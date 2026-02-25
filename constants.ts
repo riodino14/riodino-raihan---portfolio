@@ -1,6 +1,6 @@
 
 
-import { ProfileData, EducationItem, WorkExperienceItem, OrganizationItem, AchievementItem, ProjectItem, SkillCategory } from './types.ts';
+import { ProfileData, EducationItem, WorkExperienceItem, OrganizationItem, AchievementItem, ProjectItem, SkillCategory, CertificationItem } from './types.ts';
 
 export const profileData: ProfileData = {
   name: "RIODINO RAIHAN",
@@ -9,7 +9,8 @@ export const profileData: ProfileData = {
   email: "riodinoraihan@gmail.com",
   linkedin: "riodino-raihan", // Placeholder, actual URL might be linkedin.com/in/riodinoraihan
   personalStatement: "Undergraduate student in Informatics from Telkom University who has experience in leadership, organization, and has a great interest in the world of programming and aspires to become a technopreneur.",
-  profileImageUrl: "assets/Profile-Riodino-Raihan.jpeg"
+  profileImageUrl: "assets/Profile-Riodino-Raihan.jpeg", 
+  cvUrl: "https://drive.google.com/file/d/1PMLAL0jaLGCq-AcPCtqnxn_qmzmFeKiI/view?usp=sharing" // Placeholder CV link
 };
 
 export const educationData: EducationItem[] = [
@@ -31,6 +32,53 @@ export const educationData: EducationItem[] = [
 ];
 
 export const workExperienceData: WorkExperienceItem[] = [
+  {
+    id: "nolimit-intern",
+    company: "NoLimit Indonesia",
+    location: "Bandung, ID",
+    role: "Data Analyst Internship",
+    duration: "Sep 2025 – Okt 2025",
+    responsibilities: [
+      "Analyzed and visualized digital conversation data for 10+ clients across government, corporate, and public sectors, producing actionable insights to support decision-making and reputation monitoring.",
+      "Created 30+ analytical reports, improving team efficiency by ~25% through optimized NoLimit dashboards, Excel formulas, and AI-driven analysis workflows."
+    ],
+    imageUrl: "work-experience/nolimit/Internship Documentation 5.jpg",
+    // proofs: [{ label: "Certificate of 24/25", url: "https://drive.google.com/file/d/16YZ0WtpH0Sdk6lYghTWjGnJB-2kklP-Z/view?usp=sharing" }, { label: "Certificate of 23/24", url: "https://drive.google.com/file/d/1RpNVzd6aG6WCvRrP-CNF1DuUkTYhO6Ll/view?usp=sharing" }],
+    detailedInfo: {
+      description: "During my internship at NoLimit Indonesia, I focused on analyzing digital conversations to provide strategic insights for various high-profile clients. I leveraged data visualization and analytical tools to transform raw data into actionable reports.",
+      keyAchievements: [
+        "Produced 30+ comprehensive analytical reports for government and corporate clients.",
+        "Improved team reporting efficiency by 25% through workflow optimization.",
+        "Successfully monitored and analyzed brand reputation for over 10 major clients."
+      ],
+      skillsDeveloped: ["Data Visualization", "Digital Conversation Analysis", "Excel Mastery", "AI-Driven Workflows", "Reputation Monitoring"]
+    }
+  },
+  {
+    id: "pindad-intern",
+    company: "Telkom University",
+    location: "Bandung, ID",
+    role: "Surveillance System x Pindad - Model Training AI Internship",
+    duration: "Jul 2025 – Aug 2025",
+    responsibilities: [
+      "Engineered a FaceNet & SVM face recognition system (96.10% accuracy) with a real-time pipeline for multi-face tracking and registration.",
+      "Built and validated two YOLOv8 models: a crowd anomaly detector (90.32% Precision) and a people counter with flawless performance (MAE of 0.00) on a validation set.",
+      "Converted all models to TFLite (FP32, FP16, INT8) to reduce size and optimize for efficient on-device inference."
+    ],
+    imageUrl: "work-experience/pindad/team.png",
+    proofs: [{ label: "Final Report", url: "https://drive.google.com/file/d/1z431XsWXKr6a8zgVWBfi7BSLWON0qsiU/view" }, { label: "Github", url: "https://github.com/e1bhl1n/bigbrother/tree/main" }],
+
+    detailedInfo: {
+      description: "This internship involved developing advanced AI models for a surveillance system in collaboration with Pindad. I worked on face recognition, anomaly detection, and model optimization for edge devices.",
+      keyAchievements: [
+        "Achieved 96.10% accuracy in face recognition using FaceNet & SVM.",
+        "Developed a crowd anomaly detector with 90.32% precision.",
+        "Optimized AI models for on-device inference through TFLite conversion.",
+        "Implemented a real-time multi-face tracking pipeline."
+      ],
+      skillsDeveloped: ["Computer Vision", "YOLOv8", "FaceNet", "SVM", "TFLite Optimization", "Real-time AI Pipelines"]
+    }
+  },
   {
     id: "algo-assistant",
     company: "Informatics Laboratory, Telkom University",
@@ -229,6 +277,54 @@ export const organizationsData: OrganizationItem[] = [
 
 export const achievementsData: AchievementItem[] = [
   {
+    id: "adikara-2025-finalist",
+    title: "ADIKARA 2025 Finalist - Data Mining Division",
+    location: "Bandung, ID",
+    description: "Finalist in the Data Mining competition organized by the Faculty of Informatics, Telkom University, focusing on building predictive models for Indonesian credit scoring using advanced ensemble learning.",
+    date: "Dec 2025 - Jan 2026",
+    imageUrl: "achivements/adikara/Finalist Data Mining_Riodino Raihan.png",
+    proofs: [
+        { label: "Final Report", url: "https://drive.google.com/file/d/1CvmeL5pNoGFblyfAik1sr_ide8bEqOgQ/view?usp=sharing" },
+        { label: "Presentation Report", url: "https://docs.google.com/presentation/d/1_rTXlk9Ig8iN2NHuIMg_s9_cV2y9dnKo/edit?usp=sharing&ouid=118348928763786751447&rtpof=true&sd=true" },
+        { label: "Finalist announcement", url: "https://drive.google.com/file/d/1PMW-j5rwLwJPdZ6hrXMebbE1LAEHFyrT/view?usp=sharing"}, 
+    ],
+    
+    detailedInfo: {
+      fullDescription: "ADIKARA 2025 is a data science competition held by the Faculty of Informatics (FIF), Telkom University. In the Data Mining division, our team was challenged to solve real-world financial problems by predicting credit default risks for the Indonesian micro and MSME sectors. We competed against other top teams from the faculty to provide the most accurate and robust risk assessment model.",
+      context: "With 158 entrants and 49 competing teams, the competition required a rigorous data science workflow. Out of these, only the top 10 teams were selected as finalists. We performed extensive exploratory data analysis (EDA) on 20,012 transaction records and handled significant missing values in key financial features to ensure model reliability.",      learnings: [
+        "Led a team of 3 members to develop a Stacking Ensemble Model (CatBoost, XGBoost, LightGBM, and Random Forest) to achieve high prediction stability.",
+        "Implemented advanced feature engineering and data imputation techniques specifically for financial transaction datasets.",
+        "Optimized model performance based on the Macro-averaged F1 Score to ensure fairness in predicting both 'Lancar' and 'Gagal Bayar' classes.",
+        "Enhanced leadership and collaborative skills within a competitive environment at the Faculty of Informatics, Telkom University."
+      ],
+      galleryImages: ["achivements/adikara/Finalist Data Mining_Riodino Raihan.png","achivements/adikara/foto_Final.jpeg" ]
+      
+    }
+  },
+  {
+    id: "pandi-scholarship-2025",
+    title: "PANDI Scholarship 2025 Awardee",
+    location: "South Tangerang, ID",
+    description: "One of five students selected from Telkom University to receive the prestigious scholarship from PANDI (Indonesian Internet Domain Name Registry) for academic excellence in information technology.",
+    date: "Sep 2025 - Present",
+    imageUrl: "achivements/pandi/ditmawa_univtelkom_1758691488826-768x1024.jpeg",
+    proofs: [
+        { label: "Awardee Announcement via Web", url: "https://studentaffairs.telkomuniversity.ac.id/mahasiswa-berprestasi-telkom-university-raih-beasiswa-pandi-2025/" },
+        { label: "Awardee Announcement vis Instagram", url: "https://www.instagram.com/p/DO7gNDVAfoj/?img_index=2"}
+    ],
+    detailedInfo: {
+      fullDescription: "The PANDI Scholarship is a highly selective financial award granted by the Indonesian Internet Domain Name Registry (Pengelola Nama Domain Internet Indonesia). This scholarship recognizes students with outstanding academic records and significant potential to contribute to Indonesia's digital ecosystem. Being selected as an awardee signifies a high level of expertise and dedication in the field of Informatics.",
+      context: "In 2025, the competition was rigorous, with candidates evaluated on their academic performance and their vision for Indonesia's digital future. I was honored to be among the five selected students from Telkom University (and one of the few from the S1 Informatics program) to receive this recognition.",
+      learnings: [
+        "Deepening understanding of the national digital ecosystem and domain name governance in Indonesia.",
+        "Financial support for academic excellence and professional development in the IT sector.",
+        "Networking opportunities with key stakeholders in the Indonesian internet infrastructure industry.",
+        "Commitment to maintaining high academic standards and contributing to future technological innovations."
+      ],
+      galleryImages: ["achivements/pandi/Penerima Beasiswa Pandi 2025.png"]
+    }
+  },
+  {
     id: "jfls-scholarship-2023",
     title: "Jabar Future Leader Scholarship 2023 Awardee",
     location: "Bandung, ID",
@@ -242,7 +338,7 @@ export const achievementsData: AchievementItem[] = [
       fullDescription: "The Jabar Future Leader Scholarship (JFLS) is a highly competitive scholarship program from the West Java Provincial Government. It aims to prepare future leaders by providing financial support for tuition fees and living expenses for one academic year. Being an awardee signifies academic excellence, leadership potential, and a commitment to contributing to the development of West Java.",
       context: "This scholarship is awarded to thousands of students across West Java from various academic backgrounds. The selection process is rigorous, involving administrative checks, academic assessments, and interviews to identify candidates with strong leadership qualities and a vision for the future.",
       learnings: ["Financial management and budgeting.", "Networking with fellow scholars and community leaders.", "Enhanced sense of social responsibility and commitment to regional development."],
-      galleryImages: ["achivements/jfls/Bukti Diterima JFLS 2023.png"]
+      galleryImages: ["achivements/jfls/Bukti Diterima JFLS 2023.png", ]
     }
   },
   {
@@ -277,7 +373,198 @@ export const achievementsData: AchievementItem[] = [
   }
 ];
 
+export const certificationsData: CertificationItem[] = [
+  {
+    id: "dicoding-aws-genai",
+    title: "Belajar Dasar Cloud dan Gen AI di AWS",
+    issuer: "Dicoding Indonesia",
+    issueDate: "Feb 2026",
+    credentialId: "ERZRLMMJ2ZYV",
+    credentialUrl: "https://dicoding.com/certificates/ERZRLMMJ2ZYV",
+    imageUrl: "certificate/sertifikat_course_251_2835510_250226042620/0001.jpg",
+    category: "Cloud Computing"
+  },
+  {
+    id: "dicoding-logic-programming",
+    title: "Pengenalan ke Logika Pemrograman (Programming Logic 101)",
+    issuer: "Dicoding Indonesia",
+    issueDate: "Feb 2026",
+    credentialId: "10P8R66EVZQK",
+    credentialUrl: "https://dicoding.com/certificates/1OP8R66EVZQK",
+    imageUrl: "certificate/sertifikat_course_302_2835510_250226042743/0001.jpg",
+    category: "Programming"
+  },
+  {
+    id: "hacktiv8-llm-gemini",
+    title: "LLM-Based Tools and Gemini API Integration for Data Scientists",
+    issuer: "Hacktiv8 Indonesia",
+    issueDate: "Oct 2025",
+    credentialId: "00476/H8/CSR/MBA/X/2025",
+    imageUrl: "certificate/1. Hactiv8 – LLM-Based Tools and Gemini API Integration for Data Scientists 2025_Riodino Raihan.jpg",
+    category: "AI/ML"
+  },
+  {
+    id: "sic-python",
+    title: "Samsung Innovation Campus Stage 1 - Code Kickstart: Python Programming",
+    issuer: "Samsung Innovation Campus",
+    issueDate: "Oct 2025",
+    credentialId: "0219/SEIN-CC-SIC7/CP/Mahasiswa/2025-2026",
+    imageUrl: "certificate/Samsung Python/0001.jpg",
+    category: "Programming"
+  },
+  {
+    id: "sic-iot",
+    title: "Samsung Innovation Campus Stage 2 - IoT (Device and Hardware Discovery)",
+    issuer: "Samsung Innovation Campus",
+    issueDate: "Dec 2025",
+    credentialId: "219/SEIN-CC-SIC7/IoT/Mahasiswa/2025-2026",
+    imageUrl: "certificate/Samsung IOT.jpg",
+    category: "Internet of Things"
+  },
+  {
+    id: "kelas-data-analysis",
+    title: "Pengantar Data Analyst untuk Pemula",
+    issuer: "Kelas.com",
+    issueDate: "Aug 2025",
+    credentialId: "CERT-BD16C5F3",
+    imageUrl: "certificate/2. Kelas.com – Introduction to Data Analysis for Beginners (2025)_Riodino Raihan/0001.jpg",
+    category: "Data Analyst"
+  },
+  {
+    id: "ibm-big-data-101",
+    title: "Big Data 101",
+    issuer: "Cognitive Class (IBM)",
+    issueDate: "Mar 2025",
+    credentialUrl: "https://courses.cognitiveclass.ai/certificates/3b2b8a1edd6f4516a0fbe3614ce06177",
+    imageUrl: "certificate/3. IBM Cognitive Class – Big Data 101 (BD0101EN) (2025)_Riodino Raihan/0001.jpg",
+    category: "Data Analyst"
+  },
+  {
+    id: "dicoding-basic-ai",
+    title: "Belajar Dasar AI",
+    issuer: "Dicoding Indonesia",
+    issueDate: "Mar 2025",
+    credentialId: "KEXL23R30ZG2",
+    credentialUrl: "https://dicoding.com/certificates/KEXL23R30ZG2",
+    imageUrl: "certificate/4. Dicoding Indonesia – Fundamentals of Artificial Intelligence (2025)_Riodino Raihan/0001.jpg",
+    category: "AI/ML"
+  },
+  {
+    id: "microsoft-azure-ai",
+    title: "Preparation Course for Azure AI Fundamentals (AI-900)",
+    issuer: "Elevate x Microsoft",
+    issueDate: "Jun 2025",
+    credentialId: "e4la 9572",
+    imageUrl: "certificate/5. Elevate x Microsoft – Preparation Course for Azure AI Fundamentals (AI-900) (2025)_Riodino Raihan.jpg",
+    category: "Cloud Computing"
+  },
+  {
+    id: "telkom-sga-ml",
+    title: "Study Group Advance (SGA) in Machine Learning/Data Science Division",
+    issuer: "Computing Laboratory, Telkom University",
+    issueDate: "Sep 2024",
+    imageUrl: "certificate/8. Computing Laboratory, Telkom University – Study Group Advance (SGA) in Machine Learning _ Data Science Division (2024)_Riodino Raihan.png",
+    category: "AI/ML"
+  },
+  {
+    id: "codepolitan-html",
+    title: "Belajar Dasar HTML",
+    issuer: "CodePolitan",
+    issueDate: "Jul 2024",
+    credentialUrl: "https://codepolitan.com/c/W35BPVX",
+    imageUrl: "certificate/9. CodePolitan – Basic HTML Course (Belajar Dasar HTML) (2024)_Riodino Raihan.jpg",
+    category: "Web Development"
+  },
+  {
+    id: "codepolitan-css",
+    title: "Belajar Dasar CSS",
+    issuer: "CodePolitan",
+    issueDate: "Jul 2024",
+    credentialUrl: "https://codepolitan.com/c/RFIEQPV",
+    imageUrl: "certificate/10. CodePolitan – Basic CSS Course (Belajar Dasar CSS) (2024)_Riodino Raihan.jpg",
+    category: "Web Development"
+  },
+  {
+    id: "alibaba-certified-developer",
+    title: "Alibaba Cloud Certified Developer",
+    issuer: "Alibaba Cloud",
+    issueDate: "Mar 2024",
+    credentialId: "ACCD0119700100009660",
+    imageUrl: "certificate/11. Alibaba Cloud – Alibaba Cloud Certified Developer (2024, valid until Mar 12, 2026)_Riodino Raihan.jpg",
+    category: "Cloud Computing"
+  },
+  {
+    id: "microsoft-rep-telkom",
+    title: "Microsoft Representative - Digital Transformation",
+    issuer: "Microsoft University Crew @telkomuniversity",
+    issueDate: "2023",
+    credentialId: "NO. 0031",
+    imageUrl: "certificate/12. Microsoft Student Representatives, Telkom University – Data Visualization, Power BI Program, and Webinar Committee (2023)_Riodino Raihan.jpg",
+    category: "Data Analyst"
+  },
+  {
+    id: "cci-telkom-data-research",
+    title: "Anggota Divisi Data Research",
+    issuer: "UKM Central Computer Improvement (CCI) Telkom University",
+    issueDate: "Dec 2023",
+    credentialId: "033/CCI/TEL-U/XII/2023",
+    imageUrl: "certificate/13. Central Computer Improvement (CCI), Telkom University – Data Research Division Certification (2023)_Riodino Raihan.jpg",
+    category: "Data Analyst"
+  },
+
+
+];
+
 export const projectsData: ProjectItem[] = [
+  {
+    id: "edupulse",
+    title: "EduPulse: AI-Powered Learning Recommendation System",
+    description: "Architected an end-to-end educational platform featuring a student segmentation model and a context-aware generative AI chatbot for personalized learning interventions.",
+    duration: "Sep 2025 – Jan 2026",
+    responsibilities: [
+      "Architected an end-to-end educational platform using FastAPI and React, featuring a robust ETL pipeline to process and clean multi-source LMS data and an SQLite database for persistent user management.",
+      "Developed a student segmentation model using K-Means Clustering (Scikit-Learn), achieving strong clustering quality (Silhouette Score: 0.78) and identifying four distinct behavioral profiles to automate personalized interventions.",
+      "Engineered a context-aware generative AI chatbot using the Google Gemini API and RAG (Retrieval-Augmented Generation) principles to deliver real-time academic counseling based on users’ learning styles, academic performance, and clustering data."
+    ],
+    technologies: ["FastAPI", "React", "Python", "Scikit-Learn", "Google Gemini API", "RAG", "SQLite", "ETL"],
+    category: "Machine Learning",
+    imageUrl: "projects/edupulse/dashboard-edupulse.png",
+    proofs: [
+      { label: "Website Link", url: "https://tubes-banteng.vercel.app/" },
+      { label: "Slide Presentation", url: "https://drive.google.com/file/d/1bz_lYNXGbye3TVre-cbib2ycLQ8kSMPc/view" }, 
+      { label: "Github", url: "https://github.com/riodino14/tubes-banteng/tree/main"},
+    ],
+    detailedInfo: {
+      problemStatement: "Traditional LMS often lack personalized guidance, leading to suboptimal learning outcomes for students with diverse needs.",
+      solutionOverview: "EduPulse addresses this by segmenting students based on behavior and providing a RAG-based AI chatbot for personalized academic counseling.",
+      technicalChallenges: ["Designing a robust ETL pipeline for heterogeneous LMS data.", "Optimizing RAG performance for real-time responses.", "Ensuring high clustering quality with K-Means."],
+      learnings: ["Advanced RAG implementation.", "Full-stack development with FastAPI and React.", "Educational data mining and student behavioral analysis."]
+    }
+  },
+  {
+    id: "moving-better",
+    title: "Moving Better, Living Longer – Geo-Spatial Data Visualization Project",
+    description: "Developed an interactive geospatial dashboard using Streamlit and Plotly to visualize regional Net Zero policy impacts across the UK.",
+    duration: "Sep 2025 – Des 2025",
+    responsibilities: [
+      "Developed an interactive geospatial dashboard using Streamlit and Plotly to visualize regional Net Zero policy impacts across the UK.",
+      "Optimized large-scale spatial data processing by converting Shapefile and Excel datasets into Parquet-based pipelines.",
+      "Delivered actionable geo-based insights through regional comparisons and long-term trend analysis (2025–2050), highlighting economic and health co-benefits."
+    ],
+    technologies: ["Streamlit", "Plotly", "Python", "Pandas", "Geospatial Data", "Parquet"],
+    category: "Data Visualization",
+    imageUrl: "projects/visdat/dashboard_visdat.png",
+    proofs: [
+      { label: "Final Report", url: "https://drive.google.com/file/d/12OLIi3-Uck7lydhs8Nfy2QPv6iQtiR2s/view" },
+      { label: "Website Link via Streamlit", url: "https://kelompok6-uas-visualisasi-iklim.streamlit.app/" }
+    ],
+    detailedInfo: {
+      problemStatement: "Visualizing the complex, long-term impacts of Net Zero policies across different regions is challenging for policymakers and the public.",
+      solutionOverview: "Created a geospatial dashboard that simplifies complex data into interactive maps and charts, focusing on economic and health benefits.",
+      technicalChallenges: ["Handling large-scale spatial datasets efficiently.", "Designing intuitive geospatial visualizations.", "Integrating diverse data sources (Shapefiles, Excel)."],
+      learnings: ["Geospatial data processing and visualization.", "Streamlit dashboard development.", "Policy impact analysis and communication."]
+    }
+  },
   {
     id: "boston-house-price-prediction",
     title: "Boston House Price Prediction – Machine Learning Capstone",
@@ -289,10 +576,11 @@ export const projectsData: ProjectItem[] = [
       "Deployed an interactive Streamlit app with Pyngrok for real-time predictions."
     ],
     technologies: ["Python", "AdaBoost", "Random Forest", "Decision Tree", "Streamlit", "Pyngrok", "Scikit-learn"],
+    category: "Machine Learning",
     imageUrl: "projects/boston/Screenshot 2025-07-12 172658.png",
     proofs: [
       { label: "Github", url: "https://github.com/riodino14/tubesML_120" },
-      { label: "Streamlit App", url: "https://tubesml120-if-46-04.streamlit.app/" }
+      { label: "Website link via Streamlit", url: "https://tubesml120-if-46-04.streamlit.app/" }
     ],
     detailedInfo: {
       problemStatement: "To build a machine learning model that predicts Boston housing prices using various features, helping users and institutions make informed property decisions.",
@@ -321,6 +609,7 @@ export const projectsData: ProjectItem[] = [
       "Delivered full e-commerce flow: search, cart, checkout, wallet, and synced order history."
     ],
     technologies: ["Flutter", "Firebase Firestore", "Firebase Auth", "Laravel", "Dart", "MySQL"],
+    category: "Web Development",
     imageUrl: "projects/food-go/main.png", 
     proofs: [
       { label: "Github Web", url: "https://github.com/riodino14/foodgo-web-laravel-tubesabp-kel4" },
@@ -343,9 +632,7 @@ export const projectsData: ProjectItem[] = [
       ],
       galleryImages: ["projects/food-go/Screenshot 2025-07-12 174502.png", "projects/food-go/Screenshot 2025-07-12 174452.png"]
     }
-  }, 
-  
-  {
+  }, {
     id: "wholesale-customers-ai",
     title: "Wholesale Customers Dataset – Artificial Intelligence Capstone",
     description: "Analysis of Wholesale Customers dataset using KNN and Naive Bayes classification for an AI capstone project, achieving high accuracy through hyperparameter tuning.",
@@ -356,9 +643,10 @@ export const projectsData: ProjectItem[] = [
       "Found that outlier removal reduced performance, showing their predictive value."
     ],
     technologies: ["Python", "KNN", "Naive Bayes", "GridSearchCV", "Pandas", "Scikit-learn"],
+    category: "Machine Learning",
     imageUrl: "projects/wholesale/main.png",
     proofs: [
-        { label: "Streamlit App", url: "https://tubesai-1m2w.streamlit.app/" },
+        { label: "Website link via Streamlit", url: "https://tubesai-1m2w.streamlit.app/" },
         { label: "Github", url: "https://github.com/riodino14/TubesAI_1M2W" }
     ],
     detailedInfo: {
@@ -380,6 +668,7 @@ export const projectsData: ProjectItem[] = [
       "Built an interactive frontend interface with HTML, CSS, and JavaScript for seamless user experience."
     ],
     technologies: ["Java", "Spring Boot", "MySQL", "HTML", "CSS", "JavaScript", "Spring Security"],
+    category: "Web Development",
     imageUrl: "projects/pemilu/main3.png",
     proofs: [{ label: "Github", url: "https://github.com/riodino14/Pemilu_Tugas-Besar-PBO" },
              {label: "Final Report", url: "https://drive.google.com/file/d/12m-3rPEMTJ5BVueoUnGVSidUL_b4y_J8/view?usp=sharing"} 
@@ -409,6 +698,7 @@ export const projectsData: ProjectItem[] = [
       "Delivered a modern and responsive user interface using Tailwind CSS and Blade templates, enhancing user experience."
     ],
     technologies: ["Laravel", "Filament", "MySQL", "Tailwind CSS", "Blade PHP"],
+    category: "Web Development",
     imageUrl: "projects/sakuinapp/main.png",
     proofs: [{ label: "Github", url: "https://github.com/riodino14/SakuinApp" }, 
             {label : "Final Report", url: "https://drive.google.com/drive/folders/1Wu6yMzzLYiqNNlHqr5O7s3ROq1GKPs4J"},
@@ -427,47 +717,70 @@ export const projectsData: ProjectItem[] = [
       ]
     }
   },
-  // {
-  //   id: "closest-route-detection-algo",
-  //   title: "Closest Route Detection between Buildings, Strategic Algorithm Capstone",
-  //   description: "Developed a Python application to find the shortest route between buildings at Telkom University, utilizing Dijkstra and Floyd-Warshall algorithms for efficient pathfinding.",
-  //   duration: "Apr 2024 – Jun 2024",
-  //   responsibilities: [
-  //     "Led a 3-member team to build a Python app to detect the shortest route between campus buildings at Telkom University.",
-  //     "Collected distance data between 7 buildings using Google Maps.",
-  //     "Detected the shortest route between campus buildings within 1 second through the implementation of Dijkstra and Floyd-Warshall algorithms."
-  //   ],
-  //   technologies: ["Python", "Dijkstra's Algorithm", "Floyd-Warshall Algorithm", "Graph Theory"],
-  //   imageUrl: "https://picsum.photos/seed/route-detection-project/400/250",
-  //   proofs: [{ label: "Laporan Proyek", url: "#" }],
-  //    detailedInfo: {
-  //     problemStatement: "To find the shortest path between various buildings on the Telkom University campus to help students and staff navigate more efficiently.",
-  //     solutionOverview: "A Python application was developed that implements Dijkstra's and Floyd-Warshall algorithms. Distance data between key buildings was collected and used to model the campus as a graph. The application then calculates and displays the shortest route between any two selected buildings.",
-  //     technicalChallenges: ["Accurately collecting and representing inter-building distances.", "Implementing and comparing the performance of Dijkstra and Floyd-Warshall algorithms.", "Designing a simple interface for user input and output."],
-  //     learnings: ["Practical application of graph theory and shortest path algorithms.", "Data collection and modeling for algorithmic problem-solving.", "Algorithm efficiency and trade-offs (Dijkstra vs. Floyd-Warshall)."],
-  //   }
-  // },
-  // {
-  //   id: "indonesian-sentence-structure-automata",
-  //   title: "Indonesian Sentence Structure Detection, Language Theory and Automata Capstone",
-  //   description: "Created a Python application for validating Indonesian sentence structures (S-P-O-K) using token recognizers and parsers, complete with a user-friendly GUI.",
-  //   duration: "Mei 2024 – Jun 2024",
-  //   responsibilities: [
-  //     "Led a 5-member to develop a Python app for validating active sentence structures in Indonesian using a token recognizer and parser.",
-  //     "Collected and processed data for subject, verb, object, and adverb (S-P-O-K) structures in the Indonesian language.",
-  //     "Built an algorithm to automatically identify sentence structure and designed a user-friendly GUI for enhanced user experience."
-  //   ],
-  //   technologies: ["Python", "Token Recognizer", "Parser", "GUI Development (e.g., Tkinter/PyQt)", "Formal Language Theory"],
-  //   imageUrl: "https://picsum.photos/seed/sentence-structure-project/400/250",
-  //   proofs: [{ label: "Laporan Proyek", url: "#" }],
-  //   detailedInfo: {
-  //     problemStatement: "To develop a tool that can parse and validate the grammatical structure (Subject-Predicate-Object-Adverb/S-P-O-K) of Indonesian sentences based on principles of language theory and automata.",
-  //     solutionOverview: "A Python application was built featuring a token recognizer (lexer) and a parser. It processes Indonesian sentences, identifies their components (Subject, Predicate, Object, Adverb), and validates if they conform to defined grammatical rules. A GUI was developed for ease of input and visualization of results.",
-  //     technicalChallenges: ["Defining a comprehensive grammar for Indonesian S-P-O-K structures.", "Handling linguistic variations and exceptions.", "Implementing an efficient parser for the defined grammar."],
-  //     learnings: ["Application of automata theory and formal languages to natural language processing.", "Lexical analysis and parsing techniques.", "GUI development for utility applications."],
-  //     galleryImages: ["https://picsum.photos/seed/sentence-gallery1/600/400", "https://picsum.photos/seed/sentence-gallery2/600/400"]
-  //   }
-  // },
+  {
+    id: "closest-route-detection-algo",
+    title: "Closest Route Detection between Buildings, Strategic Algorithm Capstone",
+    description: "Developed a Python application to find the shortest route between buildings at Telkom University, utilizing Dijkstra and Floyd-Warshall algorithms for efficient pathfinding.",
+    duration: "Apr 2024 – Jun 2024",
+    responsibilities: [
+      "Led a 3-member team to build a Python app to detect the shortest route between campus buildings at Telkom University.",
+      "Collected distance data between 7 buildings using Google Maps.",
+      "Detected the shortest route between campus buildings within 1 second through the implementation of Dijkstra and Floyd-Warshall algorithms."
+    ],
+    technologies: ["Python", "Dijkstra's Algorithm", "Floyd-Warshall Algorithm", "Graph Theory"],
+    category: "Algorithm",
+    imageUrl: "https://picsum.photos/seed/route-detection-project/400/250",
+    proofs: [{ label: "Laporan Proyek", url: "#" }],
+     detailedInfo: {
+      problemStatement: "To find the shortest path between various buildings on the Telkom University campus to help students and staff navigate more efficiently.",
+      solutionOverview: "A Python application was developed that implements Dijkstra's and Floyd-Warshall algorithms. Distance data between key buildings was collected and used to model the campus as a graph. The application then calculates and displays the shortest route between any two selected buildings.",
+      technicalChallenges: ["Accurately collecting and representing inter-building distances.", "Implementing and comparing the performance of Dijkstra and Floyd-Warshall algorithms.", "Designing a simple interface for user input and output."],
+      learnings: ["Practical application of graph theory and shortest path algorithms.", "Data collection and modeling for algorithmic problem-solving.", "Algorithm efficiency and trade-offs (Dijkstra vs. Floyd-Warshall)."],
+    }
+  },
+  {
+    id: "indonesian-sentence-structure-automata",
+    title: "Indonesian Sentence Structure Detection, Language Theory and Automata Capstone",
+    description: "Created a Python application for validating Indonesian sentence structures (S-P-O-K) using token recognizers and parsers, complete with a user-friendly GUI.",
+    duration: "Mei 2024 – Jun 2024",
+    responsibilities: [
+      "Led a 5-member to develop a Python app for validating active sentence structures in Indonesian using a token recognizer and parser.",
+      "Collected and processed data for subject, verb, object, and adverb (S-P-O-K) structures in the Indonesian language.",
+      "Built an algorithm to automatically identify sentence structure and designed a user-friendly GUI for enhanced user experience."
+    ],
+    technologies: ["Python", "Token Recognizer", "Parser", "GUI Development (e.g., Tkinter/PyQt)", "Formal Language Theory"],
+    category: "Algorithm",
+    imageUrl: "https://picsum.photos/seed/sentence-structure-project/400/250",
+    proofs: [{ label: "Laporan Proyek", url: "#" }],
+    detailedInfo: {
+      problemStatement: "To develop a tool that can parse and validate the grammatical structure (Subject-Predicate-Object-Adverb/S-P-O-K) of Indonesian sentences based on principles of language theory and automata.",
+      solutionOverview: "A Python application was built featuring a token recognizer (lexer) and a parser. It processes Indonesian sentences, identifies their components (Subject, Predicate, Object, Adverb), and validates if they conform to defined grammatical rules. A GUI was developed for ease of input and visualization of results.",
+      technicalChallenges: ["Defining a comprehensive grammar for Indonesian S-P-O-K structures.", "Handling linguistic variations and exceptions.", "Implementing an efficient parser for the defined grammar."],
+      learnings: ["Application of automata theory and formal languages to natural language processing.", "Lexical analysis and parsing techniques.", "GUI development for utility applications."],
+      galleryImages: ["https://picsum.photos/seed/sentence-gallery1/600/400", "https://picsum.photos/seed/sentence-gallery2/600/400"]
+    }
+  },
+  {
+    id: "food-delivery-cpp",
+    title: "Food Delivery and Restaurant Management System, Data Structure Capstone",
+    description: "Designed and implemented a food delivery and restaurant management system in C++ using multi-linked lists for efficient data management.",
+    duration: "Dec 2023 – Jan 2024",
+    responsibilities: [
+      "Designed the data structure for food delivery and restaurant management in C++.",
+      "Leveraged the multi-linked list method for efficient data management, enhanced performance, and scalability.",
+      "Successfully performed 11 menu features for adding drivers/restaurants, creating orders, displaying driver/order information, and deleting driver/customer data."
+    ],
+    technologies: ["C++", "Data Structures", "Multi-Linked List"],
+    category: "Programming Language",
+    imageUrl: "https://picsum.photos/seed/food-delivery-cpp/400/250",
+    detailedInfo: {
+      problemStatement: "Efficiently managing complex relationships between drivers, restaurants, and customers in a delivery system requires a robust data structure.",
+      solutionOverview: "Implemented a multi-linked list structure in C++ to handle these relationships, providing high performance and scalability for core management features.",
+      technicalChallenges: ["Designing and debugging complex multi-linked list pointers.", "Ensuring data integrity across multiple linked entities.", "Optimizing search and deletion operations."],
+      learnings: ["Advanced C++ data structures.", "Memory management and pointer manipulation.", "System design for scalability and performance."]
+    }
+  },
+
   // {
   //   id: "dummy-project-6",
   //   title: "E-commerce Platform Redesign - UX Case Study",
@@ -479,6 +792,7 @@ export const projectsData: ProjectItem[] = [
   //     "Created low-fidelity and high-fidelity wireframes and interactive prototypes using Figma."
   //   ],
   //   technologies: ["Figma", "User Research", "UX Design", "Prototyping", "Usability Testing"],
+  //   category: "UI/UX Design",
   //   imageUrl: "https://picsum.photos/seed/ecommerce-ux-project/400/250",
   //   proofs: [{ label: "Studi Kasus", url: "#" }],
   //   detailedInfo: {
@@ -500,6 +814,7 @@ export const projectsData: ProjectItem[] = [
   //     "Utilized Firebase Firestore for storing user data and fitness activities."
   //   ],
   //   technologies: ["React Native", "Firebase", "JavaScript", "Mobile UI/UX", "API Integration"],
+  //   category: "Mobile Development",
   //   imageUrl: "https://picsum.photos/seed/fitness-app-project/400/250",
   //   proofs: [{ label: "Repositori GitHub", url: "#" }],
   //   detailedInfo: {
@@ -522,6 +837,7 @@ export const projectsData: ProjectItem[] = [
   //     "Implemented server-side rendering (SSR) for improved SEO and performance."
   //   ],
   //   technologies: ["Next.js", "React", "Sanity.io", "Tailwind CSS", "GraphQL", "SSR"],
+  //   category: "Web Development",
   //   imageUrl: "https://picsum.photos/seed/blog-cms-project/400/250",
   //   proofs: [{ label: "Repositori GitHub", url: "#" }],
   //   detailedInfo: {
@@ -545,7 +861,9 @@ export const skillsData: SkillCategory[] = [
   },
   {
     categoryName: "Languages",
-    skills: ["Indonesia (Native)", "English (Intermediate)"], 
-    proofs: [{ label: "Certification of International Communication English Course", url: "https://drive.google.com/file/d/1xjL5rH5H759tHvAd3TkjLKIG6TzXnnBX/view?usp=sharing" }]
+    skills: ["Indonesia (Native)", "English (Intermediate)"],
+    proofs: [
+      { label: "English Proficiency Certificate", url: "https://example.com/riodino-raihan-english-cert.pdf" }
+    ]
   }
 ];

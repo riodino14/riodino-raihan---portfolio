@@ -1,8 +1,8 @@
 import React from 'react';
 import { ProfileData } from '../types.ts';
-import { FaPhone, FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
-import { FaFileAlt } from 'react-icons/fa';
-const Hero: React.FC<ProfileData> = ({ name, title, phone, email, linkedin, personalStatement, profileImageUrl }) => {
+import { FaPhone, FaEnvelope, FaLinkedin, FaGithub, FaFileAlt } from 'react-icons/fa';
+
+const Hero: React.FC<ProfileData> = ({ name, title, phone, email, linkedin, personalStatement, profileImageUrl, cvUrl }) => {
   return (
     <section 
       id="hero" 
@@ -21,34 +21,40 @@ const Hero: React.FC<ProfileData> = ({ name, title, phone, email, linkedin, pers
         </h1>
         <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-6">{title}</p>
         <p className="text-md md:text-lg max-w-2xl mx-auto text-slate-500 dark:text-slate-400 mb-8">{personalStatement}</p>
-        <div className="flex flex-wrap justify-center items-center space-x-4 md:space-x-6">
+        
+        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 mb-8">
           {/* {phone && (
             <a href={`tel:${phone}`} className="flex items-center text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors">
-              <FaPhone className="mr-2" /> {phone}
+              <span className="mr-2 flex items-center"><FaPhone /></span> {phone}
             </a>
           )} */}
           {email && (
-            <a href={`mailto:riodinoraihan@gmail.com`} className="flex items-center text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors">
-              <FaEnvelope className="mr-2" /> {email}
+            <a href={`mailto:${email}`} className="flex items-center text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors">
+              <span className="mr-2 flex items-center"><FaEnvelope /></span> {email}
             </a>
           )}
           {linkedin && (
-            <a href={`https://linkedin.com/in/riodino-raihan`} target="_blank" rel="noopener noreferrer" className="flex items-center text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors">
-              <FaLinkedin className="mr-2" /> LinkedIn
+            <a href={`https://linkedin.com/in/${linkedin}`} target="_blank" rel="noopener noreferrer" className="flex items-center text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors">
+              <span className="mr-2 flex items-center"><FaLinkedin /></span> LinkedIn
             </a>
           )}
-           <a href={`https://github.com/riodino14`} target="_blank" rel="noopener noreferrer" className="flex items-center text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors">
-              <FaGithub className="mr-2" /> GitHub
-            </a>
-            <a
-              href="https://drive.google.com/file/d/16ihYlD7aBHRkS8ZQcPwxiuH1zZ3SPYcG/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors"
-            >
-              <FaFileAlt className="mr-2" /> View My CV
+           <a href={`https://github.com/${linkedin}`} target="_blank" rel="noopener noreferrer" className="flex items-center text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors">
+              <span className="mr-2 flex items-center"><FaGithub /></span> GitHub
             </a>
         </div>
+
+        {cvUrl && (
+          <div className="flex justify-center">
+            <a 
+              href={cvUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-8 py-3 bg-sky-600 hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+            >
+              <span className="mr-2 flex items-center"><FaFileAlt /></span> View My CV
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1,5 +1,4 @@
 
-import { FaLink, FaExternalLinkAlt } from 'react-icons/fa';
 
 import React, { useState, useEffect, useRef, Dispatch, SetStateAction } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -17,21 +16,57 @@ import {
   organizationsData, 
   achievementsData, 
   projectsData, 
-  skillsData 
+  skillsData,
+  certificationsData
 } from '../constants.ts';
-import { EducationItem, SkillCategory, ProjectItem, WorkExperienceItem, AchievementItem } from '../types.ts';
+import { EducationItem, SkillCategory, ProjectItem, WorkExperienceItem, AchievementItem, CertificationItem } from '../types.ts';
+import CertificationCard from '../components/CertificationCard.tsx';
+
+import { FaExternalLinkAlt, FaLink } from 'react-icons/fa';
 
 const HomePage: React.FC = () => {
   const [currentProjectsPage, setCurrentProjectsPage]: [number, Dispatch<SetStateAction<number>>] = useState<number>(1);
-  const projectsPerPage = 5;
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [currentCertificationsPage, setCurrentCertificationsPage] = useState<number>(1);
+  const [selectedCertCategory, setSelectedCertCategory] = useState<string>('All');
+  
+  const projectsPerPage = 4;
+  const certificationsPerPage = 3;
   
   const location = useLocation();
   const didConceptualMount = useRef(false);
   const prevProjectsPageRef = useRef<number | undefined>(undefined);
+  const prevCertificationsPageRef = useRef<number | undefined>(undefined);
+
+  // Extract unique categories for projects
+  const categories = ['All', ...Array.from(new Set(projectsData.map(p => p.category).filter(Boolean))) as string[]];
+
+  // Extract unique categories for certifications
+  const certCategories = ['All', ...Array.from(new Set(certificationsData.map(c => c.category).filter(Boolean))) as string[]];
+
+  // Filter projects based on selected category
+  const filteredProjects = selectedCategory === 'All' 
+    ? projectsData 
+    : projectsData.filter(project => project.category === selectedCategory);
+
+  // Filter certifications based on selected category
+  const filteredCertifications = selectedCertCategory === 'All'
+    ? certificationsData
+    : certificationsData.filter(cert => cert.category === selectedCertCategory);
 
   useEffect(() => {
     didConceptualMount.current = true;
   }, []);
+
+  // Reset to first page when project category changes
+  useEffect(() => {
+    setCurrentProjectsPage(1);
+  }, [selectedCategory]);
+
+  // Reset to first page when certification category changes
+  useEffect(() => {
+    setCurrentCertificationsPage(1);
+  }, [selectedCertCategory]);
 
   // Effect for scrolling to a section from a hash link
   useEffect(() => {
@@ -50,10 +85,18 @@ const HomePage: React.FC = () => {
 
   const indexOfLastProject = currentProjectsPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  const currentProjects = projectsData.slice(indexOfFirstProject, indexOfLastProject);
+  const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
+
+  const indexOfLastCert = currentCertificationsPage * certificationsPerPage;
+  const indexOfFirstCert = indexOfLastCert - certificationsPerPage;
+  const currentCertifications = filteredCertifications.slice(indexOfFirstCert, indexOfLastCert);
 
   const paginateProjects = (pageNumber: number) => {
     setCurrentProjectsPage(pageNumber);
+  };
+
+  const paginateCertifications = (pageNumber: number) => {
+    setCurrentCertificationsPage(pageNumber);
   };
 
   useEffect(() => {
@@ -68,6 +111,18 @@ const HomePage: React.FC = () => {
     prevProjectsPageRef.current = currentProjectsPage;
   }, [currentProjectsPage]);
 
+  useEffect(() => {
+    if (didConceptualMount.current && prevCertificationsPageRef.current !== undefined && prevCertificationsPageRef.current !== currentCertificationsPage) {
+      const certsSectionElement = document.getElementById('certifications');
+      if (certsSectionElement) {
+        setTimeout(() => {
+          certsSectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 0);
+      }
+    }
+    prevCertificationsPageRef.current = currentCertificationsPage;
+  }, [currentCertificationsPage]);
+
   return (
     <div className="animate-fadeIn">
       <Hero {...profileData} />
@@ -81,35 +136,28 @@ const HomePage: React.FC = () => {
                 <h3 className="text-xl font-semibold text-sky-600 dark:text-sky-400">{edu.institution}</h3>
                 <p className="text-md text-slate-700 dark:text-slate-300">{edu.degree}</p>
                 <p className="text-sm text-slate-500 dark:text-slate-500">{edu.duration} | {edu.location}</p>
-                {edu.gpa && (
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">
-                    GPA: {edu.gpa}
-                  </p>
-                )}
-
+                {edu.gpa && <p className="text-sm text-slate-600 dark:text-slate-400">GPA: {edu.gpa}</p>}
                 {edu.notes && edu.notes.length > 0 && (
                   <ul className="list-disc list-inside mt-2 text-sm text-slate-700 dark:text-slate-300">
                     {edu.notes.map((note, i) => <li key={i}>{note}</li>)}
                   </ul>
                 )}
-
+                
                 {edu.proofs && edu.proofs.length > 0 && (
-                  <div className="mt-4">
-                    <h4 className="text-md font-semibold text-sky-600 dark:text-sky-400 mb-2 flex items-center">
-                      <FaLink className="mr-2" /> Supporting Documents
-                    </h4>
-                    <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
-                      {edu.proofs.map((proof, index) => (
+                  <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+                    <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 flex items-center">
+                      <span className="mr-2 flex items-center"><FaLink /></span> Supporting Documents
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {edu.proofs.map((proof, i) => (
                         <a 
-                          key={index}
+                          key={i}
                           href={proof.url} 
                           target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="inline-flex items-center justify-center px-4 py-2 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white text-sm font-medium rounded-md transition-colors shadow-md"
-                          aria-label={`View document: ${proof.label}`}
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-3 py-1.5 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white text-xs font-semibold rounded-md transition-colors shadow-sm"
                         >
-                          <FaExternalLinkAlt className="mr-2" />
-                          {proof.label}
+                          <span className="mr-1.5 flex items-center"><FaExternalLinkAlt /></span> {proof.label}
                         </a>
                       ))}
                     </div>
@@ -141,6 +189,23 @@ const HomePage: React.FC = () => {
       </Section>
 
       <Section title="Projects" id="projects">
+        {/* Category Filter */}
+        <div className="flex flex-wrap gap-2 mb-8">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-sm ${
+                selectedCategory === category
+                  ? 'bg-sky-600 text-white shadow-sky-200 dark:shadow-sky-900/20'
+                  : 'bg-white text-slate-600 hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
         <div className="grid md:grid-cols-2 gap-8">
           {currentProjects.map((project: ProjectItem) => (
             <ProjectCard 
@@ -149,13 +214,18 @@ const HomePage: React.FC = () => {
             />
           ))}
         </div>
-        {projectsData.length > projectsPerPage && (
+        {filteredProjects.length > projectsPerPage && (
           <Pagination
             itemsPerPage={projectsPerPage}
-            totalItems={projectsData.length}
+            totalItems={filteredProjects.length}
             paginate={paginateProjects}
             currentPage={currentProjectsPage}
           />
+        )}
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-slate-500 dark:text-slate-400 italic">No projects found in this category.</p>
+          </div>
         )}
       </Section>
       
@@ -170,47 +240,80 @@ const HomePage: React.FC = () => {
         </div>
       </Section>
 
-      <Section title="Skills & Competencies" id="skills">
-  <div className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-lg shadow-lg transition-colors duration-300">
-    {skillsData.map((category: SkillCategory, index: number) => (
-      <div key={index} className="mb-6 last:mb-0">
-        <h3 className="text-xl font-semibold text-sky-600 dark:text-sky-400 mb-3">{category.categoryName}</h3>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {category.skills.map((skill, skillIndex) => (
-            <span key={skillIndex} className="bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200 px-3 py-1.5 text-sm rounded-full shadow">
-              {skill}
-            </span>
+      <Section title="Certifications & Licenses" id="certifications">
+        {/* Certification Category Filter */}
+        <div className="flex flex-wrap gap-2 mb-8">
+          {certCategories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCertCategory(category)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-sm ${
+                selectedCertCategory === category
+                  ? 'bg-sky-600 text-white shadow-sky-200 dark:shadow-sky-900/20'
+                  : 'bg-white text-slate-600 hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700'
+              }`}
+            >
+              {category}
+            </button>
           ))}
         </div>
 
-        {/* Tombol Proofs */}
-        {category.proofs && category.proofs.length > 0 && (
-          <div className="mt-2">
-            <h4 className="text-md font-semibold text-sky-600 dark:text-sky-400 mb-2 flex items-center">
-              <FaLink className="mr-2" /> Supporting Documents
-            </h4>
-            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
-              {category.proofs.map((proof, index) => (
-                <a 
-                  key={index}
-                  href={proof.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center justify-center px-4 py-2 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white text-sm font-medium rounded-md transition-colors shadow-md"
-                  aria-label={`View document: ${proof.label}`}
-                >
-                  <FaExternalLinkAlt className="mr-2" />
-                  {proof.label}
-                </a>
-              ))}
-            </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {currentCertifications.map((cert: CertificationItem) => (
+            <CertificationCard 
+              key={cert.id} 
+              {...cert}
+            />
+          ))}
+        </div>
+
+        {filteredCertifications.length > certificationsPerPage && (
+          <Pagination
+            itemsPerPage={certificationsPerPage}
+            totalItems={filteredCertifications.length}
+            paginate={paginateCertifications}
+            currentPage={currentCertificationsPage}
+          />
+        )}
+
+        {filteredCertifications.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-slate-500 dark:text-slate-400 italic">No certifications found in this category.</p>
           </div>
         )}
-      </div>
-    ))}
-  </div>
-</Section>
+      </Section>
 
+      <Section title="Skills & Competencies" id="skills">
+        <div className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-lg shadow-lg transition-colors duration-300">
+          {skillsData.map((category: SkillCategory, index: number) => (
+            <div key={index} className="mb-6 last:mb-0">
+              <h3 className="text-xl font-semibold text-sky-600 dark:text-sky-400 mb-3">{category.categoryName}</h3>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill, skillIndex) => (
+                  <span key={skillIndex} className="bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200 px-3 py-1.5 text-sm rounded-full shadow">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+              {category.proofs && category.proofs.length > 0 && (
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {category.proofs.map((proof, i) => (
+                    <a 
+                      key={i}
+                      href={proof.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-3 py-1 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white text-xs font-semibold rounded-md transition-colors shadow-sm"
+                    >
+                      <span className="mr-1.5 flex items-center"><FaExternalLinkAlt /></span> {proof.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </Section>
     </div>
   );
 };

@@ -13,6 +13,7 @@ export interface ProfileData {
   linkedin: string; // Assuming 'riodinoraihan' is a LinkedIn profile ID or similar
   personalStatement: string;
   profileImageUrl?: string;
+  cvUrl?: string; // Added for CV link
 }
 
 export interface EducationItem {
@@ -21,9 +22,9 @@ export interface EducationItem {
   degree: string;
   duration: string;
   gpa?: string;
-  proofs?: ProofLink[];
   notes?: string[];
   imageUrl?: string;
+  proofs?: ProofLink[]; // Added for supporting documents like KHS
 }
 
 export interface WorkExperienceItem {
@@ -85,6 +86,7 @@ export interface ProjectItem {
   duration: string;
   responsibilities: string[];
   technologies?: string[];
+  category?: string; // Added for filtering
   imageUrl: string;
   proofs?: ProofLink[]; // Replaced proofUrl with an array of labeled links
   detailedInfo?: { // Added for more detailed project information
@@ -97,8 +99,20 @@ export interface ProjectItem {
   };
 }
 
+export interface CertificationItem {
+  id: string;
+  title: string;
+  issuer: string;
+  issueDate: string;
+  expiryDate?: string;
+  credentialId?: string;
+  credentialUrl?: string;
+  imageUrl: string;
+  category?: string; // Added for filtering
+}
+
 export interface SkillCategory {
   categoryName: string;
   skills: string[];
-  proofs?: ProofLink[];
+  proofs?: ProofLink[]; // Added for supporting documents like language certificates
 }

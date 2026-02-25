@@ -8,7 +8,15 @@ if (!rootElement) {
   throw new Error("Could not find root element to mount to");
 }
 
-const root = ReactDOM.createRoot(rootElement);
+// Use a global variable to store the root to avoid "container already passed to createRoot" error
+const globalAny: any = window;
+let root = globalAny._reactRoot;
+
+if (!root) {
+  root = ReactDOM.createRoot(rootElement);
+  globalAny._reactRoot = root;
+}
+
 root.render(
   <React.StrictMode>
     <ThemeProvider>
