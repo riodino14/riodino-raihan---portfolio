@@ -863,7 +863,7 @@ export const skillsData: SkillCategory[] = [
     categoryName: "Languages",
     skills: ["Indonesia (Native)", "English (Intermediate)"],
     proofs: [
-      { label: "English Proficiency Certificate", url: "https://example.com/riodino-raihan-english-cert.pdf" }
+      { label: "English Proficiency Certificate", url: "https://drive.google.com/file/d/1Uqj1JLu0n4PoOBhGqPzvae0h-M4oOfAv/view?usp=sharing" }
     ]
   }
 ];
